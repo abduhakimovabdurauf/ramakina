@@ -6,6 +6,7 @@ export default defineI18nConfig(() => ({
   messages: {
     uz: {
       navbar: {
+        home: 'Bosh Sahifa',
         about: 'Biz haqimizda',
         products: 'Mahsulotlar',
         services: 'Xizmatlar',
@@ -53,8 +54,12 @@ export default defineI18nConfig(() => ({
         phone: 'Telefon'
       },
       footer: {
-        rights: "RA Makina. Barcha huquqlar himoyalangan."
+        rights: "Barcha huquqlar himoyalangan.",
+        description: "RA Makina – sanoat uskunalari ishlab chiqarish bo‘yicha yetakchi kompaniya.",
+        links: "Tez havolalar",
+        contact: "Bog‘lanish"
       },
+
       order: {
         title: 'Buyurtma berish',
         button: 'Buyurtma berish',
@@ -84,6 +89,7 @@ export default defineI18nConfig(() => ({
     },
     ru: {
       navbar: {
+        home: 'Главная',
         about: 'О нас',
         products: 'Продукты',
         services: 'Услуги',
@@ -132,7 +138,10 @@ export default defineI18nConfig(() => ({
         phone: 'Телефон'
       },
       footer: {
-        rights: "RA Makina. Все права защищены."
+        rights: "Все права защищены.",
+        description: "RA Makina – ведущая компания по производству промышленного оборудования.",
+        links: "Быстрые ссылки",
+        contact: "Контакты"
       },
       order: {
         title: 'Оформить заказ',
@@ -165,6 +174,7 @@ export default defineI18nConfig(() => ({
     },
     tr: {
       navbar: {
+        home: 'Ana Sayfa',
         about: 'Hakkımızda',
         products: 'Ürünler',
         services: 'Hizmetler',
@@ -212,7 +222,10 @@ export default defineI18nConfig(() => ({
         phone: 'Telefon'
       },
       footer: {
-        rights: "RA Makina. Tüm hakları saklıdır."
+        rights: "Tüm hakları saklıdır.",
+        description: "RA Makina – endüstriyel ekipman üretiminde lider bir şirkettir.",
+        links: "Hızlı bağlantılar",
+        contact: "İletişim"
       },
       order: {
         title: 'Sipariş Ver',
@@ -244,6 +257,7 @@ export default defineI18nConfig(() => ({
     },
     en: {
       navbar: {
+        home: 'Home',
         about: 'About Us',
         products: 'Products',
         services: 'Services',
@@ -291,7 +305,10 @@ export default defineI18nConfig(() => ({
         phone: 'Phone'
       },
       footer: {
-        rights: "RA Makina. All rights reserved."
+        rights: "All rights reserved.",
+        description: "RA Makina is a leading company in industrial equipment manufacturing.",
+        links: "Quick links",
+        contact: "Contact"
       },
       order: {
         title: 'Place an Order',

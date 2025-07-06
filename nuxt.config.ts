@@ -1,6 +1,7 @@
 // nuxt.config.ts
 import { defineNuxtConfig } from 'nuxt/config'
 export default defineNuxtConfig({
+  compatibilityDate: '2025-07-06',
   devtools: { enabled:false },
   css: ['~/assets/css/app.css'],
   modules: [
@@ -9,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxtjs/tailwindcss',
   ],
+  plugins:['~/plugins/gsap.client.ts'],
   i18n: {
     lazy: false,
     defaultLocale: 'ru',

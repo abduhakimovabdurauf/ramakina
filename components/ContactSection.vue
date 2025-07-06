@@ -1,8 +1,8 @@
 <template>
-  <section class="py-20 px-3 md:px-0">
+  <section ref="sectionRef" class="py-20 px-3 md:px-0">
     <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row gap-10">
       <!-- Chap taraf -->
-      <div class="md:w-1/2">
+      <div ref="leftRef" class="md:w-1/2 opacity-0 translate-y-10">
         <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
           {{ $t('contact.title') }}
         </h2>
@@ -18,7 +18,7 @@
       </div>
 
       <!-- Forma -->
-      <div class="md:w-1/2">
+      <div ref="formRef" class="md:w-1/2 opacity-0 translate-y-10">
         <form @submit.prevent="handleSubmit" class="space-y-5">
           <input
             type="text"
@@ -50,21 +50,21 @@
         </form>
       </div>
     </div>
+    <Toast v-if="toast.show" :message="toast.message" :type="toast.type" />
   </section>
-  <Toast v-if="toast.show" :message="toast.message" :type="toast.type" />
-
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, reactive, onMounted, nextTick } from 'vue'
 import Toast from '@/components/ui/Toast.vue'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const toast = reactive({
   show: false,
   message: '',
   type: 'success'
 })
-
 
 function showToast(message, type = 'success') {
   toast.message = message
@@ -75,8 +75,6 @@ function showToast(message, type = 'success') {
     toast.show = false
   }, 3000)
 }
-
-
 
 const form = ref({
   fullName: '',
@@ -93,20 +91,55 @@ const handleSubmit = async () => {
 💬 Xabar: ${form.value.message}
 `
 
-const { error } = await useFetch('/api/telegram', {
-  method: 'POST',
-  body: { text: message }
+  const { error } = await useFetch('/api/telegram', {
+    method: 'POST',
+    body: { text: message }
+  })
+
+  if (error.value) {
+    showToast('Xabar yuborilmadi.', 'error')
+  } else {
+    showToast('Xabar yuborildi!', 'success')
+    form.value.fullName = ''
+    form.value.email = ''
+    form.value.message = ''
+  }
+}
+
+// Animatsiya uchun ref'lar
+const sectionRef = ref(null)
+const leftRef = ref(null)
+const formRef = ref(null)
+
+onMounted(async () => {
+  await nextTick()
+  gsap.registerPlugin(ScrollTrigger)
+
+  // Chap taraf animatsiyasi
+  gsap.to(leftRef.value, {
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: sectionRef.value,
+      start: 'top 85%',
+      toggleActions: 'play reset play reset'
+    }
+  })
+
+  // Forma animatsiyasi
+  gsap.to(formRef.value, {
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    delay: 0.2,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: sectionRef.value,
+      start: 'top 85%',
+      toggleActions: 'play reset play reset'
+    }
+  })
 })
-
-if (error.value) {
-  showToast('Xabar yuborilmadi.', 'error')
-} else {
-  showToast('Xabar yuborildi!', 'success')
-  form.value.fullName = ''
-  form.value.email = ''
-  form.value.message = ''
-}
-
-}
-
 </script>

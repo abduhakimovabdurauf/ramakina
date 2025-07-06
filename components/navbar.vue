@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-gray-50 border-b border-gray-200 relative z-50">
+  <nav ref="navRef" class="bg-gray-50 border-b border-gray-200 relative z-50">
     <div class="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <NuxtLink to="/" class="flex items-center gap-2">
@@ -17,6 +17,7 @@
             {{ $t(item.label) }}
           </NuxtLink>
         </div>
+
         <div class="flex items-center gap-2">
           <NuxtLink
             to="/contact"
@@ -24,12 +25,17 @@
           >
             {{ $t('navbar.contact') }}
           </NuxtLink>
-          <button
-            @click="switchLocale"
-            class="p-2 rounded-md hover:bg-gray-200 uppercase transition"
+
+          <!-- SELECT DROPDOWN for LANGUAGE -->
+          <select
+            v-model="localeModel"
+            @change="setLocale(localeModel)"
+            class="p-2 rounded-md border text-sm bg-white uppercase"
           >
-            🌐 {{ locale }}
-          </button>
+            <option v-for="loc in locales" :key="loc" :value="loc">
+              {{ languageNames[loc] }}
+            </option>
+          </select>
 
           <button
             @click="isOpen = true"
@@ -41,84 +47,96 @@
       </div>
     </div>
 
-    <transition name="fade">
-      <div
-        v-if="isOpen"
-        @click="isOpen = false"
-        class="fixed inset-0 bg-black opacity-60 z-40"
-      />
-    </transition>
+    <!-- Overlay -->
+    <div
+      v-if="isOpen"
+      @click="isOpen = false"
+      class="fixed inset-0 bg-black opacity-60 z-40"
+    />
 
-    <transition name="slide">
-      <div
-        v-if="isOpen"
-        class="fixed top-0 right-0 w-64 h-full bg-white shadow-lg z-50 p-6 flex flex-col gap-4"
-      >
-        <div class="flex justify-between items-center mb-4">
-          <span class="text-lg font-semibold text-gray-800">Menu</span>
-          <button @click="isOpen = false" class="text-2xl leading-none">&times;</button>
-        </div>
-
-        <NuxtLink
-          v-for="item in menu"
-          :key="item.path"
-          :to="item.path"
-          @click="isOpen = false"
-          class="text-gray-800 hover:text-primary transition text-base"
-        >
-          {{ $t(item.label) }}
-        </NuxtLink>
-
-        <NuxtLink
-          to="/contact"
-          @click="isOpen = false"
-          class="mt-4 px-4 py-2 bg-gray-200 hover:bg-gray-300 text-sm font-semibold text-gray-900 rounded-md transition"
-        >
-          {{ $t('navbar.contact') }}
-        </NuxtLink>
+    <div
+      v-if="isOpen"
+      ref="menuRef"
+      class="fixed top-0 right-0 w-64 h-screen bg-white shadow-lg z-50 p-6 flex flex-col gap-4"
+    >
+      <div class="flex justify-between items-center mb-4">
+        <span class="text-lg font-semibold text-gray-800">Menu</span>
+        <button @click="isOpen = false" class="text-2xl leading-none">&times;</button>
       </div>
-    </transition>
+
+      <NuxtLink
+        v-for="item in menu"
+        :key="item.path"
+        :to="item.path"
+        @click="isOpen = false"
+        class="text-gray-800 hover:text-primary transition text-base"
+      >
+        {{ $t(item.label) }}
+      </NuxtLink>
+
+      <NuxtLink
+        to="/contact"
+        @click="isOpen = false"
+        class="mt-4 px-4 py-2 bg-gray-200 hover:bg-gray-300 text-sm font-semibold text-gray-900 rounded-md transition"
+      >
+        {{ $t('navbar.contact') }}
+      </NuxtLink>
+    </div>
   </nav>
 </template>
 
 <script setup>
-const isOpen = ref(false)
+import { ref, onMounted, watch } from 'vue'
+import { gsap } from 'gsap'
+import { useI18n } from 'vue-i18n'
 
+const isOpen = ref(false)
+const navRef = ref(null)
+const menuRef = ref(null)
+
+// i18n
 const { locale, setLocale } = useI18n()
 const locales = ['en', 'ru', 'tr', 'uz']
+const localeModel = ref(locale.value)
 
-const switchLocale = () => {
-  const currentIndex = locales.indexOf(locale.value)
-  const nextLocale = locales[(currentIndex + 1) % locales.length]
-  setLocale(nextLocale)
+watch(localeModel, (newLocale) => {
+  setLocale(newLocale)
+})
+
+// optional: til nomlarini ko‘rsatish
+const languageNames = {
+  en: 'English',
+  ru: 'Русский',
+  tr: 'Türkçe',
+  uz: "O'zbekcha"
 }
 
+// menu
 const menu = [
   { path: '/about', label: 'navbar.about' },
   { path: '/products', label: 'navbar.products' },
   { path: '/services', label: 'navbar.services' },
   { path: '/visionmission', label: 'navbar.vision' },
 ]
+
+// animatsiyalar
+onMounted(() => {
+  gsap.from(navRef.value, {
+    y: -60,
+    opacity: 0,
+    duration: 0.8,
+    ease: 'power3.out'
+  })
+})
+watch(isOpen, (val) => {
+  if (val && menuRef.value) {
+    gsap.fromTo(menuRef.value,
+      { x: 300, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.5, ease: 'power2.out' }
+    )
+    document.body.style.overflow = 'hidden'
+  } else {
+    document.body.style.overflow = ''
+  }
+})
 </script>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.slide-enter-active,
-.slide-leave-active {
-  transition: transform 0.3s ease;
-}
-.slide-enter-from {
-  transform: translateX(100%);
-}
-.slide-leave-to {
-  transform: translateX(100%);
-}
-</style>

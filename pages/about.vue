@@ -1,26 +1,66 @@
 <template>
-  <div class="max-w-4xl mx-auto px-4 py-16">
+  <div class="max-w-4xl mx-auto px-4 py-16" ref="sectionRef">
     <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-8 text-center">
       {{ t('aboutPage.title') }}
     </h1>
 
     <div class="space-y-6 text-gray-700 text-base sm:text-lg leading-relaxed">
-      <p>{{ t('aboutPage.p1') }}</p>
-      <p>{{ t('aboutPage.p2') }}</p>
-      <p>{{ t('aboutPage.p3') }}</p>
-      <p>{{ t('aboutPage.p4') }}</p>
-      <p>{{ t('aboutPage.p5') }}</p>
-      <p>{{ t('aboutPage.p6') }}</p>
+      <p
+        v-for="(p, i) in paragraphs"
+        :key="i"
+        ref="setParagraphRef"
+      >
+        {{ t(p) }}
+      </p>
     </div>
   </div>
 </template>
 
-
 <script setup>
 import { useI18n } from 'vue-i18n'
-const { t,locale } = useI18n()
-
+import { onMounted, ref } from 'vue'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 import { useHead } from '#imports'
+
+const { t, locale } = useI18n()
+gsap.registerPlugin(ScrollTrigger)
+
+// ScrollTrigger uchun section
+const sectionRef = ref(null)
+
+// Paragraph DOM elementlarini to‘plash uchun
+const paragraphRefs = ref([])
+
+const setParagraphRef = el => {
+  if (el && !paragraphRefs.value.includes(el)) {
+    paragraphRefs.value.push(el)
+  }
+}
+
+onMounted(() => {
+  gsap.from(paragraphRefs.value, {
+    opacity: 0,
+    y: 30,
+    stagger: 0.2,
+    duration: 1,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: sectionRef.value,
+      start: 'top 80%',
+      toggleActions: 'play none none reset' // animatsiyani har safar ko‘rinsa, qayta ishga tushuradi
+    },
+  })
+})
+
+const paragraphs = [
+  'aboutPage.p1',
+  'aboutPage.p2',
+  'aboutPage.p3',
+  'aboutPage.p4',
+  'aboutPage.p5',
+  'aboutPage.p6'
+]
 
 const metaData = {
   uz: {
@@ -59,5 +99,4 @@ useHead({
     { name: 'twitter:image', content: 'https://example.com/og-image.jpg' }
   ]
 })
-
 </script>

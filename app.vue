@@ -6,6 +6,18 @@
 
 <script setup>
 
+// onMounted(()=> {
+//   fetch('http://localhost/ramakina-admin/api/products.php')
+//   .then(res => res.json())
+//   .then(data => {
+//     if (data.status === 'success') {
+//       console.log(data.data);
+//     }
+//   });
+
+// })
+
+
 </script>
 
 <style>

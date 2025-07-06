@@ -7,6 +7,8 @@
         :loop="true"
         :pagination="{ clickable: true }"
         class="h-[400px] sm:h-[600px]"
+        @slideChange="animateText"
+        @swiper="onSwiper"
       >
         <SwiperSlide v-for="slide in slides" :key="slide.id">
           <div class="relative w-full h-full">
@@ -19,10 +21,16 @@
             <div
               class="absolute inset-0 flex flex-col justify-center px-4 sm:px-12 lg:px-20 py-6 bg-gradient-to-r from-black/70 to-black/50 text-white"
             >
-              <h1 class="text-2xl sm:text-4xl font-bold max-w-xl leading-snug">
+              <h1
+                ref="titles"
+                class="slide-title text-2xl sm:text-4xl font-bold max-w-xl leading-snug"
+              >
                 {{ $t(slide.title) }}
               </h1>
-              <p class="mt-3 text-sm sm:text-base max-w-xl">
+              <p
+                ref="subtitles"
+                class="slide-subtitle mt-3 text-sm sm:text-base max-w-xl"
+              >
                 {{ $t(slide.subtitle) }}
               </p>
             </div>
@@ -36,6 +44,8 @@
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, Pagination } from 'swiper/modules'
+import { ref, onMounted, nextTick } from 'vue'
+import { gsap } from 'gsap'
 
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -56,4 +66,40 @@ const slides = [
     subtitle: 'hero2.subtitle'
   }
 ]
+
+// refs to elements inside each slide
+const titles = ref<HTMLElement[]>([])
+const subtitles = ref<HTMLElement[]>([])
+
+// Store swiper instance
+const swiperInstance = ref()
+
+const onSwiper = (swiper: any) => {
+  swiperInstance.value = swiper
+  nextTick(() => {
+    animateText() // animatsiyani birinchi sahifada ko‘rsatish uchun
+  })
+}
+
+// Animate slide content
+const animateText = () => {
+  const index = swiperInstance.value?.realIndex || 0
+
+  const titleEl = titles.value[index]
+  const subtitleEl = subtitles.value[index]
+
+  if (titleEl && subtitleEl) {
+    gsap.fromTo(
+      titleEl,
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1,delay: 0.2, ease: 'power3.out',toggleActions: 'play reset play reset' }
+    )
+
+    gsap.fromTo(
+      subtitleEl,
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, delay: 0.5, ease: 'power2.out',toggleActions: 'play reset play reset' }
+    )
+  }
+}
 </script>

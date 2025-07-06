@@ -31,6 +31,7 @@ const counters = [
 
 const animatedValues = ref(counters.map(() => 0))
 const sectionRef = ref(null)
+let hasAnimated = ref(false)
 
 function animateValue(index, target, duration = 1500) {
   const startTime = performance.now()
@@ -43,17 +44,21 @@ function animateValue(index, target, duration = 1500) {
     else animatedValues.value[index] = target
   }
 
-  animatedValues.value[index] = 0 // reset before animating
+  animatedValues.value[index] = 0
   requestAnimationFrame(update)
 }
 
 onMounted(() => {
   const observer = new IntersectionObserver(
     (entries) => {
-      if (entries[0].isIntersecting) {
+      const entry = entries[0]
+      if (entry.isIntersecting) {
+        // Reset va qayta animatsiya
         counters.forEach((counter, index) => {
           animateValue(index, counter.value)
         })
+      } else {
+        animatedValues.value = counters.map(() => 0)
       }
     },
     { threshold: 0.5 }

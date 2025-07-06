@@ -1,6 +1,6 @@
 <template>
     <ClientOnly>
-        <div class="flex flex-col min-h-screen bg-[#f9fafb]">
+        <div class="flex flex-col min-h-screen bg-[#f9fafb] overflow-x-hidden">
             <navbar/>
             
             <Transition name="page" mode="out-in">
