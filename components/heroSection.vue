@@ -41,7 +41,7 @@
   </section>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, Pagination } from 'swiper/modules'
 import { ref, onMounted, nextTick } from 'vue'
@@ -67,21 +67,18 @@ const slides = [
   }
 ]
 
-// refs to elements inside each slide
-const titles = ref<HTMLElement[]>([])
-const subtitles = ref<HTMLElement[]>([])
+const titles = ref([])
+const subtitles = ref([])
 
-// Store swiper instance
 const swiperInstance = ref()
 
-const onSwiper = (swiper: any) => {
+const onSwiper = (swiper) => {
   swiperInstance.value = swiper
   nextTick(() => {
-    animateText() // animatsiyani birinchi sahifada ko‘rsatish uchun
+    animateText()
   })
 }
 
-// Animate slide content
 const animateText = () => {
   const index = swiperInstance.value?.realIndex || 0
 

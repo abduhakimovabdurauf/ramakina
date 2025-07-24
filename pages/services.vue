@@ -15,7 +15,7 @@
           >
             <div class="h-[80%] bg-gray-100 overflow-hidden">
               <NuxtImg
-                :src="service.imagePath"
+                :src="CpanelLink + service.images[0]"
                 :alt="service.name"
                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
@@ -39,8 +39,11 @@
 import { useServiceStore } from '@/stores/services'
 import { useHead } from '#imports'
 const serviceStore = useServiceStore()
-
 const { locale } = useI18n()
+const config = useRuntimeConfig()
+const CpanelLink = config.public.CPANEL_LINK
+console.log('SSR:', import.meta.server, CpanelLink)
+console.log('Client:', import.meta.client, CpanelLink)
 
 const translatedServices = computed(() =>
   serviceStore.services.map((service) => ({

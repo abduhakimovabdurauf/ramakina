@@ -1,15 +1,13 @@
 <template>
   <footer ref="footerRef" class="bg-gray-900 text-white pt-16 pb-8 px-4">
     <div class="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-      <!-- Kompaniya haqida -->
       <div>
-        <h3 class="text-lg font-semibold mb-4">RA Makina</h3>
+        <h3 class="text-lg font-semibold mb-4">WellEnergy</h3>
         <p class="text-gray-400 text-sm leading-relaxed">
           {{ $t('footer.description') }}
         </p>
       </div>
 
-      <!-- Tez havolalar -->
       <div>
         <h3 class="text-lg font-semibold mb-4">{{ $t('footer.links') }}</h3>
         <ul class="space-y-2 text-sm">
@@ -20,11 +18,10 @@
         </ul>
       </div>
 
-      <!-- Aloqa -->
       <div>
         <h3 class="text-lg font-semibold mb-4">{{ $t('footer.contact') }}</h3>
         <ul class="text-sm space-y-2 text-gray-400">
-          <li><strong>{{ $t('contact.address') }}:</strong> Gaziantep, Turkiya</li>
+          <li><strong>{{ $t('contact.address') }}:</strong> Fergana, Uzbekistan</li>
           <li><strong>{{ $t('contact.email') }}:</strong> info@ramakina.com</li>
           <li><strong>{{ $t('contact.phone') }}:</strong> +90 123 456 78 90</li>
         </ul>

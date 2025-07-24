@@ -5,17 +5,22 @@
 </template>
 
 <script setup>
+import { useProductStore } from '@/stores/products.js';
+import { useServiceStore } from '@/stores/services.js';
 
-// onMounted(()=> {
-//   fetch('http://localhost/ramakina-admin/api/products.php')
-//   .then(res => res.json())
-//   .then(data => {
-//     if (data.status === 'success') {
-//       console.log(data.data);
-//     }
-//   });
+const productStore = useProductStore();
+const serviceStore = useServiceStore();
+onMounted(async () => {
+  if (!productStore.products.length) {
+    await productStore.fetchProducts()
+  }
 
-// })
+  if (!serviceStore.services.length) {
+    await serviceStore.fetchServices()
+  }
+})
+
+
 
 
 </script>

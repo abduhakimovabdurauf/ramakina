@@ -1,8 +1,8 @@
 <template>
-  <section ref="sectionRef" class="py-20 px-3 md:px-0">
+  <section class="py-20 px-3 md:px-0">
     <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row gap-10">
       <!-- Chap taraf -->
-      <div ref="leftRef" class="md:w-1/2 opacity-0 translate-y-10">
+      <div class="md:w-1/2">
         <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
           {{ $t('contact.title') }}
         </h2>
@@ -11,14 +11,20 @@
         </p>
 
         <ul class="text-gray-700 space-y-2">
-          <li><strong>{{ $t('contact.address') }}:</strong> Gaziantep, Turkiya</li>
-          <li><strong>{{ $t('contact.email') }}:</strong> info@ramakina.com</li>
-          <li><strong>{{ $t('contact.phone') }}:</strong> +90 123 456 78 90</li>
+          <li>
+            <strong>{{ $t('contact.address') }}:</strong> Фарғона вилояти, Марғилон шаҳар, Пичоқчи МФЙ, Хиёбон кўчаси 65-уй
+          </li>
+          <li>
+            <strong>{{ $t('contact.email') }}:</strong> info@ramakina.com
+          </li>
+          <li>
+            <strong>{{ $t('contact.phone') }}:</strong> +998 91 532 66 66
+          </li>
         </ul>
       </div>
 
       <!-- Forma -->
-      <div ref="formRef" class="md:w-1/2 opacity-0 translate-y-10">
+      <div class="md:w-1/2">
         <form @submit.prevent="handleSubmit" class="space-y-5">
           <input
             type="text"
@@ -55,10 +61,8 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, nextTick } from 'vue'
+import { ref, reactive } from 'vue'
 import Toast from '@/components/ui/Toast.vue'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const toast = reactive({
   show: false,
@@ -105,41 +109,4 @@ const handleSubmit = async () => {
     form.value.message = ''
   }
 }
-
-// Animatsiya uchun ref'lar
-const sectionRef = ref(null)
-const leftRef = ref(null)
-const formRef = ref(null)
-
-onMounted(async () => {
-  await nextTick()
-  gsap.registerPlugin(ScrollTrigger)
-
-  // Chap taraf animatsiyasi
-  gsap.to(leftRef.value, {
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: sectionRef.value,
-      start: 'top 85%',
-      toggleActions: 'play reset play reset'
-    }
-  })
-
-  // Forma animatsiyasi
-  gsap.to(formRef.value, {
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    delay: 0.2,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: sectionRef.value,
-      start: 'top 85%',
-      toggleActions: 'play reset play reset'
-    }
-  })
-})
 </script>

@@ -1,10 +1,10 @@
 <template>
   <nav ref="navRef" class="bg-gray-50 border-b border-gray-200 relative z-50">
     <div class="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
+      <div class="flex justify-between items-center h-16 md:h-20">
         <NuxtLink to="/" class="flex items-center gap-2">
           <NuxtImg src="/logo.svg" alt="EcoBoiler Logo" width="24" height="24" />
-          <span class="font-semibold text-lg text-gray-900">EcoBoiler Solutions</span>
+          <span class="font-semibold text-lg md:text-xl text-gray-900">WellEnergy</span>
         </NuxtLink>
 
         <div class="hidden lg:flex items-center gap-6">
@@ -12,7 +12,7 @@
             v-for="item in menu"
             :key="item.path"
             :to="item.path"
-            class="text-sm text-gray-800 hover:text-primary transition"
+            class="text-sm md:text-base text-gray-800 hover:text-primary transition"
           >
             {{ $t(item.label) }}
           </NuxtLink>
@@ -21,16 +21,14 @@
         <div class="flex items-center gap-2">
           <NuxtLink
             to="/contact"
-            class="px-4 py-2 text-sm font-semibold bg-gray-200 hover:bg-gray-300 text-gray-900 rounded-md transition hidden md:inline-block"
+            class="px-4 py-2 text-sm md:text-base font-semibold bg-gray-200 hover:bg-gray-300 text-gray-900 rounded-md transition hidden md:inline-block"
           >
             {{ $t('navbar.contact') }}
           </NuxtLink>
-
-          <!-- SELECT DROPDOWN for LANGUAGE -->
           <select
             v-model="localeModel"
             @change="setLocale(localeModel)"
-            class="p-2 rounded-md border text-sm bg-white uppercase"
+            class="p-2 rounded-md border text-sm md:text-base bg-white uppercase"
           >
             <option v-for="loc in locales" :key="loc" :value="loc">
               {{ languageNames[loc] }}

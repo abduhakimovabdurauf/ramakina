@@ -3,6 +3,7 @@
     <AboutSection/>
     <productSection/>
     <servicesSection/>
+    <VideoSection/>
     <CounterSection/>
     <ContactSection/>
 </template>

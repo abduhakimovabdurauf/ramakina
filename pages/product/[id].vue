@@ -1,7 +1,10 @@
 <template>
   <div class="max-w-6xl mx-auto px-4 py-10">
-    <div v-if="product" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-      
+    <div v-if="!productStore.products.length" class="text-center text-gray-500 text-lg py-20">
+      {{ $t('loading') }}
+    </div>
+
+    <div v-else-if="product" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
       <div>
         <Swiper
           :modules="[Navigation, Thumbs]"
@@ -9,11 +12,11 @@
           class="w-full h-[250px] xs:h-[300px] sm:h-[400px] rounded overflow-hidden"
         >
           <SwiperSlide
-            v-for="(img, index) in product.imagePath"
+            v-for="(img, index) in product.images"
             :key="index"
           >
             <NuxtImg
-              :src="img"
+              :src="CpanelLink + img || 'default.jpg'"
               class="w-full h-full object-cover"
               :alt="product.name"
             />
@@ -32,12 +35,12 @@
           class="mt-4"
         >
           <SwiperSlide
-            v-for="(img, index) in product.imagePath"
+            v-for="(img, index) in product.images"
             :key="'thumb' + index"
             class="cursor-pointer"
           >
             <NuxtImg
-              :src="img"
+              :src="CpanelLink + img || '/default.jpg'"
               class="h-16 w-full object-cover rounded border hover:opacity-80 transition"
             />
           </SwiperSlide>
@@ -58,16 +61,17 @@
         <NuxtLink
           to="/products"
           class="mt-6 inline-block ml-2 bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 px-6 rounded"
-        >Boshqa mahsulotlarni korish</NuxtLink>
+        >{{ $t('otherProducts') }}</NuxtLink>
       </div>
     </div>
 
     <div v-else class="text-center text-gray-500 text-lg py-20">
       {{ $t('product.notFound') }}
     </div>
+
     <OrderModal
       :visible="modalOpen"
-      :productName="product.name"
+      :productName="product?.name"
       @close="modalOpen = false"
     />
   </div>
@@ -83,6 +87,14 @@ import 'swiper/css/navigation'
 import 'swiper/css/thumbs'
 import { useProductStore } from '@/stores/products'
 import Toast from '@/components/ui/Toast.vue'
+import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+const config = useRuntimeConfig()
+const CpanelLink = config.public.CPANEL_LINK
+const route = useRoute()
+const { locale } = useI18n()
+const productStore = useProductStore()
+const modalOpen = ref(false)
 
 const toast = reactive({
   show: false,
@@ -90,26 +102,27 @@ const toast = reactive({
   type: 'success'
 })
 
+function showToast(message, type = 'success') {
+  toast.message = message
+  toast.type = type
+  toast.show = true
+  setTimeout(() => (toast.show = false), 3000)
+}
 
 function showSuccess() {
-  showToast('Successful!', type = 'success')
+  showToast('Successful!', 'success')
 }
 function showError() {
-  showToast('Error!', type = 'error')
+  showToast('Error!', 'error')
 }
-const route = useRoute()
-const { locale } = useI18n()
-const productStore = useProductStore()
-const modalOpen = ref(false)
 
 const product = computed(() => {
-  const found = productStore.products.find(p => p.id === route.params.id)
+  const found = productStore.products.find(p => p.id === Number(route.params.id))
   if (!found) return null
   return {
     ...found,
     name: found.name[locale.value],
-    description: found.description[locale.value],
-    imagePath: found.imagePath
+    description: found.description[locale.value]
   }
 })
 

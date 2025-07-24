@@ -24,5 +24,10 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/png', href: '/logo.svg' }
       ]
     }
+  },
+  runtimeConfig: {
+    public: {
+      CPANEL_LINK: process.env.NUXT_PUBLIC_CPANEL_LINK
+    }
   }
 })

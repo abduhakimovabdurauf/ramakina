@@ -1,10 +1,13 @@
 <template>
   <div class="max-w-6xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-3 gap-10">
-    <!-- Left: Selected Service Info -->
     <Transition name="fade" mode="out-in">
-      <div :key="activeService.name.uz" class="md:col-span-2 space-y-6">
+      <div
+        v-if="activeService"
+        :key="activeService.id"
+        class="md:col-span-2 space-y-6"
+      >
         <NuxtImg
-          :src="activeService.imagePath"
+          :src="activeService.images[0] ? CpanelLink + activeService.images[0] : '/default.jpg'"
           class="w-full h-64 sm:h-80 object-cover rounded"
           :alt="activeService.name[locale]"
         />
@@ -12,22 +15,21 @@
           <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">
             {{ activeService.name[locale] }}
           </h1>
-          <p class="text-gray-700 leading-relaxed text-base sm:text-lg">
+          <p v-if="activeService.description" class="text-gray-700 leading-relaxed text-base sm:text-lg">
             {{ activeService.description[locale] }}
           </p>
         </div>
       </div>
     </Transition>
 
-    <!-- Right: Service Links -->
     <div class="space-y-3">
       <div
         v-for="service in services"
-        :key="service.name.uz"
+        :key="service.id"
         @click="selectService(service)"
         :class="[
           'relative cursor-pointer p-3 pl-6 rounded border text-sm sm:text-base transition before:content-[\'\'] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-2 before:w-4 before:h-4 before:-rotate-45 before:bg-gray-800 before:transition-all',
-          activeService.name.uz === service.name.uz
+          activeService?.id === service.id
             ? 'bg-gray-800 text-white border-gray-700'
             : 'bg-white text-gray-800 hover:bg-gray-100 border-gray-300 before:hidden'
         ]"
@@ -38,16 +40,25 @@
   </div>
 </template>
 
-
 <script setup>
-import { useServiceStore } from '@/stores/services'
+import { ref, onMounted, watchEffect } from 'vue'
+import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { useServiceStore } from '@/stores/services'
 
-const serviceStore = useServiceStore()
+const config = useRuntimeConfig()
+const CpanelLink = config.public.CPANEL_LINK
+const route = useRoute()
 const { locale } = useI18n()
+const serviceStore = useServiceStore()
 
 const services = serviceStore.services
-const activeService = ref(services[0])
+const activeService = ref(null)
+
+watchEffect(() => {
+  const id = route.params.id
+  activeService.value = services.find((s) => s.id == id)
+})
 
 function selectService(service) {
   activeService.value = service
