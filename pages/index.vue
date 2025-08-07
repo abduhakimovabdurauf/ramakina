@@ -15,20 +15,20 @@ const { locale } = useI18n()
 
 const metaData = {
   uz: {
-    title: 'RA Makina - Sifatli sanoat uskunalari ishlab chiqaruvchisi',
-    description: '30 yillik tajribaga ega RA Makina kompaniyasi sanoat uskunalari, qozonlar, aritma tizimlari va boshqa maxsus yechimlar ishlab chiqaradi.'
+    title: 'WellEnergy - Sifatli sanoat uskunalari ishlab chiqaruvchisi',
+    description: '30 yillik tajribaga ega WellEnergy kompaniyasi sanoat uskunalari, qozonlar, aritma tizimlari va boshqa maxsus yechimlar ishlab chiqaradi.'
   },
   ru: {
-    title: 'RA Makina - Производитель качественного промышленного оборудования',
-    description: 'RA Makina с 30-летним опытом производит котлы, системы очистки и промышленные решения высокого качества.'
+    title: 'WellEnergy - Производитель качественного промышленного оборудования',
+    description: 'WellEnergy с 30-летним опытом производит котлы, системы очистки и промышленные решения высокого качества.'
   },
   en: {
-    title: 'RA Makina - High-Quality Industrial Equipment Manufacturer',
-    description: 'With over 30 years of experience, RA Makina produces boilers, refining systems, and customized industrial solutions.'
+    title: 'WellEnergy - High-Quality Industrial Equipment Manufacturer',
+    description: 'With over 30 years of experience, WellEnergy produces boilers, refining systems, and customized industrial solutions.'
   },
   tr: {
-    title: 'RA Makina - Kaliteli Endüstriyel Ekipman Üreticisi',
-    description: '30 yılı aşkın tecrübesiyle RA Makina, kazanlar, arıtma sistemleri ve özel sanayi çözümleri üretmektedir.'
+    title: 'WellEnergy - Kaliteli Endüstriyel Ekipman Üreticisi',
+    description: '30 yılı aşkın tecrübesiyle WellEnergy, kazanlar, arıtma sistemleri ve özel sanayi çözümleri üretmektedir.'
   }
 }
 

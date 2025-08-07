@@ -30,19 +30,19 @@ const { locale } = useI18n()
 
 const metaData = {
   uz: {
-    title: 'Vizyon & Missiya - RA Makina',
+    title: 'Vizyon & Missiya - WellEnergy',
     description: 'Bizning missiyamiz – ekologik toza, ishonchli va yuqori sifatli sanoat mahsulotlari yetkazib berish. Vizyonimiz – texnologik yangiliklar bilan yetakchilik qilish va barqaror rivojlanishni ta’minlash.'
   },
   ru: {
-    title: 'Видение и миссия - RA Makina',
+    title: 'Видение и миссия - WellEnergy',
     description: 'Наша миссия — предоставлять экологически чистые, надежные и высокоэффективные промышленные продукты. Наше видение — быть лидером и поддерживать устойчивое развитие.'
   },
   en: {
-    title: 'Vision & Mission - RA Makina',
+    title: 'Vision & Mission - WellEnergy',
     description: 'Our mission is to deliver eco-friendly, reliable, and high-performance industrial products. Our vision is to lead through innovation and ensure sustainable development.'
   },
   tr: {
-    title: 'Vizyon & Misyon - RA Makina',
+    title: 'Vizyon & Misyon - WellEnergy',
     description: 'Misyonumuz, çevre dostu, güvenilir ve yüksek performanslı endüstriyel ürünler sunmaktır. Vizyonumuz, yeniliklerle lider olmak ve sürdürülebilir büyümeyi sağlamaktır.'
   }
 }

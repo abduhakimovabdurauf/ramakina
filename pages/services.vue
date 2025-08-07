@@ -55,20 +55,20 @@ const translatedServices = computed(() =>
 
 const metaData = {
   uz: {
-    title: 'Xizmatlar - RA Makina sanoat yechimlari',
-    description: 'RA Makina tomonidan taklif etiladigan xizmatlar: tekstil, neft, logistika, oziq-ovqat, transport, yogʻ sanoati va boshqa sohalar uchun moslashtirilgan sanoat yechimlari.'
+    title: 'Xizmatlar - WellEnergy sanoat yechimlari',
+    description: 'WellEnergy tomonidan taklif etiladigan xizmatlar: tekstil, neft, logistika, oziq-ovqat, transport, yogʻ sanoati va boshqa sohalar uchun moslashtirilgan sanoat yechimlari.'
   },
   ru: {
-    title: 'Услуги - Промышленные решения RA Makina',
-    description: 'Услуги от RA Makina: решения для текстиля, нефти, логистики, пищевой промышленности, транспорта и других отраслей.'
+    title: 'Услуги - Промышленные решения WellEnergy',
+    description: 'Услуги от WellEnergy: решения для текстиля, нефти, логистики, пищевой промышленности, транспорта и других отраслей.'
   },
   en: {
-    title: 'Services - RA Makina Industrial Solutions',
-    description: 'Explore RA Makina services for industries like textile, oil, logistics, food, transportation, lubrication, and more.'
+    title: 'Services - WellEnergy Industrial Solutions',
+    description: 'Explore WellEnergy services for industries like textile, oil, logistics, food, transportation, lubrication, and more.'
   },
   tr: {
-    title: 'Hizmetler - RA Makina Endüstriyel Çözümler',
-    description: 'RA Makina hizmetleri: tekstil, petrol, lojistik, gıda, ulaşım, yağ ve diğer sektörlere özel çözümler.'
+    title: 'Hizmetler - WellEnergy Endüstriyel Çözümler',
+    description: 'WellEnergy hizmetleri: tekstil, petrol, lojistik, gıda, ulaşım, yağ ve diğer sektörlere özel çözümler.'
   }
 }
 

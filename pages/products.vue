@@ -56,20 +56,20 @@ const translatedProducts = computed(() =>
 
 const metaData = {
   uz: {
-    title: 'Mahsulotlar - RA Makina sanoat uskunalari',
-    description: 'RA Makina tomonidan ishlab chiqarilgan qayta ishlash tizimlari, qozonlar, tanklar va boshqa sanoat uskunalari bilan tanishing.'
+    title: 'Mahsulotlar - WellEnergy sanoat uskunalari',
+    description: 'WellEnergy tomonidan ishlab chiqarilgan qayta ishlash tizimlari, qozonlar, tanklar va boshqa sanoat uskunalari bilan tanishing.'
   },
   ru: {
-    title: 'Продукты - Промышленное оборудование RA Makina',
-    description: 'Ознакомьтесь с промышленным оборудованием от RA Makina: системы переработки, котлы, резервуары и многое другое.'
+    title: 'Продукты - Промышленное оборудование WellEnergy',
+    description: 'Ознакомьтесь с промышленным оборудованием от WellEnergy: системы переработки, котлы, резервуары и многое другое.'
   },
   en: {
-    title: 'Products - RA Makina Industrial Equipment',
-    description: 'Discover industrial solutions by RA Makina including recycling systems, boilers, tanks, and more.'
+    title: 'Products - WellEnergy Industrial Equipment',
+    description: 'Discover industrial solutions by WellEnergy including recycling systems, boilers, tanks, and more.'
   },
   tr: {
-    title: 'Ürünler - RA Makina Endüstriyel Ekipmanlar',
-    description: 'RA Makina tarafından üretilen geri dönüşüm sistemleri, kazanlar, tanklar ve diğer endüstriyel ekipmanları keşfedin.'
+    title: 'Ürünler - WellEnergy Endüstriyel Ekipmanlar',
+    description: 'WellEnergy tarafından üretilen geri dönüşüm sistemleri, kazanlar, tanklar ve diğer endüstriyel ekipmanları keşfedin.'
   }
 }
 

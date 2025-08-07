@@ -64,20 +64,20 @@ const paragraphs = [
 
 const metaData = {
   uz: {
-    title: 'Biz haqimizda - RA Makina',
-    description: 'RA Makina 30 yildan ortiq tajribaga ega. Biz sanoat uskunalari ishlab chiqaramiz va xalqaro mijozlarimizga yechimlar taqdim etamiz.'
+    title: 'Biz haqimizda - WellEnergy',
+    description: 'WellEnergy 30 yildan ortiq tajribaga ega. Biz sanoat uskunalari ishlab chiqaramiz va xalqaro mijozlarimizga yechimlar taqdim etamiz.'
   },
   ru: {
-    title: 'О нас - RA Makina',
-    description: 'RA Makina имеет более 30 лет опыта. Мы производим промышленное оборудование и предоставляем решения международным клиентам.'
+    title: 'О нас - WellEnergy',
+    description: 'WellEnergy имеет более 30 лет опыта. Мы производим промышленное оборудование и предоставляем решения международным клиентам.'
   },
   en: {
-    title: 'About Us - RA Makina',
-    description: 'RA Makina has over 30 years of experience. We produce industrial machines and provide solutions for international clients.'
+    title: 'About Us - WellEnergy',
+    description: 'WellEnergy has over 30 years of experience. We produce industrial machines and provide solutions for international clients.'
   },
   tr: {
-    title: 'Hakkımızda - RA Makina',
-    description: 'RA Makina 30 yılı aşkın deneyime sahiptir. Endüstriyel makineler üretiyor ve uluslararası müşterilere çözümler sunuyoruz.'
+    title: 'Hakkımızda - WellEnergy',
+    description: 'WellEnergy 30 yılı aşkın deneyime sahiptir. Endüstriyel makineler üretiyor ve uluslararası müşterilere çözümler sunuyoruz.'
   }
 }
 
