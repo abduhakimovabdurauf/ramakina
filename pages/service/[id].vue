@@ -7,7 +7,7 @@
         class="md:col-span-2 space-y-6"
       >
         <NuxtImg
-          :src="activeService.images[0] ? CpanelLink + activeService.images[0] : '/default.jpg'"
+          :src="activeService.images[0] ? activeService.images[0] : '/default.jpg'"
           class="w-full h-64 sm:h-80 object-cover rounded"
           :alt="activeService.name[locale]"
         />
@@ -46,8 +46,6 @@ import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useServiceStore } from '@/stores/services'
 
-const config = useRuntimeConfig()
-const CpanelLink = config.public.CPANEL_LINK
 const route = useRoute()
 const { locale } = useI18n()
 const serviceStore = useServiceStore()

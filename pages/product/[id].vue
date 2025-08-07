@@ -16,7 +16,7 @@
             :key="index"
           >
             <NuxtImg
-              :src="CpanelLink + img || 'default.jpg'"
+              :src="img || 'default.jpg'"
               class="w-full h-full object-cover"
               :alt="product.name"
             />
@@ -40,7 +40,7 @@
             class="cursor-pointer"
           >
             <NuxtImg
-              :src="CpanelLink + img || '/default.jpg'"
+              :src="img || '/default.jpg'"
               class="h-16 w-full object-cover rounded border hover:opacity-80 transition"
             />
           </SwiperSlide>
@@ -89,8 +89,6 @@ import { useProductStore } from '@/stores/products'
 import Toast from '@/components/ui/Toast.vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-const config = useRuntimeConfig()
-const CpanelLink = config.public.CPANEL_LINK
 const route = useRoute()
 const { locale } = useI18n()
 const productStore = useProductStore()

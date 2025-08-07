@@ -56,13 +56,10 @@ useHead({
     { property: 'og:title', content: current.title },
     { property: 'og:description', content: current.description },
     { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: 'https://example.com/vizyon-misyon' },
-    { property: 'og:image', content: 'https://example.com/og-vizyon.jpg' },
 
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: current.title },
     { name: 'twitter:description', content: current.description },
-    { name: 'twitter:image', content: 'https://example.com/og-vizyon.jpg' }
   ]
 })
 </script>

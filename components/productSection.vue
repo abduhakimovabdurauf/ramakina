@@ -66,14 +66,11 @@ const translatedProducts = computed(() =>
     description: product.description[locale.value]
   }))
 )
-
-const config = useRuntimeConfig()
-const CpanelLink = config.public.CPANEL_LINK || ''
 const limitedProducts = computed(() => translatedProducts.value.slice(0, 6))
 
 const getImageSrc = (product) => {
   return product.images?.[0]
-    ? CpanelLink + product.images[0]
+    ? product.images[0]
     : '/default.jpg'
 }
 

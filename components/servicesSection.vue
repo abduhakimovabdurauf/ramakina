@@ -57,8 +57,6 @@ import { ref, computed } from 'vue'
 import { useServiceStore } from '@/stores/services'
 import { useI18n } from 'vue-i18n'
 
-const config = useRuntimeConfig()
-const CpanelLink = config.public.CPANEL_LINK || ''
 
 const serviceStore = useServiceStore()
 const { locale } = useI18n()
@@ -71,7 +69,7 @@ const translatedServices = computed(() =>
 )
 
 const getImageUrl = (imgPath) => {
-  return imgPath ? `${CpanelLink}${imgPath}` : '/default.jpg'
+  return imgPath ? imgPath : '/default.jpg'
 }
 
 // GSAP va ScrollTrigger to'liq olib tashlandi

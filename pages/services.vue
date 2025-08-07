@@ -15,7 +15,7 @@
           >
             <div class="h-[80%] bg-gray-100 overflow-hidden">
               <NuxtImg
-                :src="CpanelLink + service.images[0]"
+                :src="service.images[0]"
                 :alt="service.name"
                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
@@ -81,13 +81,10 @@ useHead({
     { property: 'og:title', content: current.title },
     { property: 'og:description', content: current.description },
     { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: 'https://example.com/services' }, // Domenni to'g'rilang
-    { property: 'og:image', content: 'https://example.com/og-services.jpg' },
 
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: current.title },
     { name: 'twitter:description', content: current.description },
-    { name: 'twitter:image', content: 'https://example.com/og-services.jpg' }
   ]
 })
 

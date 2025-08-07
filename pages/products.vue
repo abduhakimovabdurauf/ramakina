@@ -15,7 +15,7 @@
           >
             <div class="h-[80%] bg-gray-100 overflow-hidden">
               <NuxtImg
-                :src="CpanelLink + product.images?.[0] || '/default.jpg'"
+                :src="product.images?.[0] || '/default.jpg'"
                 :alt="product.name"
                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
@@ -42,8 +42,6 @@ import { useI18n } from 'vue-i18n'
 import { useHead } from '#imports'
 import { useProductStore } from '@/stores/products'
 import { computed, onMounted } from 'vue'
-const config = useRuntimeConfig()
-const CpanelLink = config.public.CPANEL_LINK
 
 const { locale } = useI18n()
 const productStore = useProductStore()
@@ -84,12 +82,9 @@ useHead(() => ({
     { property: 'og:title', content: current.value.title },
     { property: 'og:description', content: current.value.description },
     { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: 'https://example.com/products' },
-    { property: 'og:image', content: 'https://example.com/og-products.jpg' },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: current.value.title },
     { name: 'twitter:description', content: current.value.description },
-    { name: 'twitter:image', content: 'https://example.com/og-products.jpg' }
   ]
 }))
 </script>

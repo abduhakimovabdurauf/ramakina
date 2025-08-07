@@ -3,7 +3,7 @@
     <div class="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16 md:h-20">
         <NuxtLink to="/" class="flex items-center gap-2">
-          <NuxtImg src="/logo.svg" alt="EcoBoiler Logo" width="24" height="24" />
+          <NuxtImg src="/logo.png" alt="EcoBoiler Logo" width="24" height="24" />
           <span class="font-semibold text-lg md:text-xl text-gray-900">WellEnergy</span>
         </NuxtLink>
 
