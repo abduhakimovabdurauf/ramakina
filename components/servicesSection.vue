@@ -62,7 +62,7 @@ const serviceStore = useServiceStore()
 const { locale } = useI18n()
 
 const translatedServices = computed(() =>
-  serviceStore.services.map((service) => ({
+  serviceStore.services.slice(0, 3).map((service) => ({
     ...service,
     name: service.name?.[locale.value] ?? service.name?.['en'] ?? 'No name',
   }))

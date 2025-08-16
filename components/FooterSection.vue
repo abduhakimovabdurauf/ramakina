@@ -23,7 +23,7 @@
         <ul class="text-sm space-y-2 text-gray-400">
           <li><strong>{{ $t('contact.address') }}:</strong> Fergana, Uzbekistan</li>
           <li><strong>{{ $t('contact.email') }}:</strong> info@ramakina.com</li>
-          <li><strong>{{ $t('contact.phone') }}:</strong> +90 123 456 78 90</li>
+          <li><strong>{{ $t('contact.phone') }}:</strong> +998 91 532 66 66</li>
         </ul>
         <div class="flex gap-4 mt-4">
           <a href="#" class="hover:text-primary transition"><i class="bx bxl-facebook text-xl"></i></a>
