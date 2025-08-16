@@ -21,7 +21,7 @@
       <div>
         <h3 class="text-lg font-semibold mb-4">{{ $t('footer.contact') }}</h3>
         <ul class="text-sm space-y-2 text-gray-400">
-          <li><strong>{{ $t('contact.address') }}:</strong> Fergana, Uzbekistan</li>
+          <li><strong>{{ $t('contact.address') }}:</strong> Фарғона вилояти, Марғилон шаҳар, Пичоқчи МФЙ, Хиёбон кўчаси 65-уй</li>
           <li><strong>{{ $t('contact.email') }}:</strong> info@ramakina.com</li>
           <li><strong>{{ $t('contact.phone') }}:</strong> +998 91 532 66 66</li>
         </ul>
