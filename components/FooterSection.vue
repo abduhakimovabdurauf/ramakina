@@ -24,6 +24,11 @@
           <li><strong>{{ $t('contact.address') }}:</strong> Фарғона вилояти, Марғилон шаҳар, Пичоқчи МФЙ, Хиёбон кўчаси 65-уй</li>
           <li><strong>{{ $t('contact.email') }}:</strong> info@ramakina.com</li>
           <li><strong>{{ $t('contact.phone') }}:</strong> +998 91 532 66 66</li>
+          <li>
+            <a class="flex items-center gap-2 text-gray-600 hover:text-white duration-300" target="_blank" href="https://www.instagram.com/wellenergyramakina?igsh=MWptaWMzejU0ajBibA==">
+              <NuxtImg src="/instagram-light.svg" width="24" alt="Instagram" /> instagram
+            </a>
+          </li>
         </ul>
         <div class="flex gap-4 mt-4">
           <a href="#" class="hover:text-primary transition"><i class="bx bxl-facebook text-xl"></i></a>

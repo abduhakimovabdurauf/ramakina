@@ -20,6 +20,11 @@
           <li>
             <strong>{{ $t('contact.phone') }}:</strong> +998 91 532 66 66
           </li>
+          <li>
+            <a class="flex items-center gap-2 text-gray-600" target="_blank" href="https://www.instagram.com/wellenergyramakina?igsh=MWptaWMzejU0ajBibA==">
+              <NuxtImg src="/instagram.svg" width="24" alt="Instagram" /> instagram
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -49,7 +54,7 @@
           ></textarea>
           <button
             type="submit"
-            class="bg-black hover:bg-gray-800 text-white py-3 px-6 rounded transition w-full"
+            class="bg-black cursor-pointer hover:bg-gray-800 text-white py-3 px-6 rounded transition w-full"
           >
             {{ $t('contact.send') }}
           </button>
