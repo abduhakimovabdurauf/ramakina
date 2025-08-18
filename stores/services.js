@@ -19,7 +19,7 @@ export const useServiceStore = defineStore('service', {
       },
       "created_at": "2025-07-24 15:19:52",
       "images": [
-        "/services/1.jpg",
+        "/services/8.jpg",
         "/services/1-2.jpg",
         "/services/1-3.jpg"
       ]
@@ -40,7 +40,7 @@ export const useServiceStore = defineStore('service', {
       },
       "created_at": "2025-07-24 15:18:52",
       "images": [
-        "/services/2.jpg",
+        "/services/7.jpg",
         "/services/2-2.jpg",
         "/services/2-3.jpg"
       ]
@@ -82,7 +82,7 @@ export const useServiceStore = defineStore('service', {
       },
       "created_at": "2025-07-24 15:13:24",
       "images": [
-        "/services/3.jpg",
+        "/services/2.jpg",
         "/services/4-2.jpg",
         "/services/4-3.jpg"
       ]

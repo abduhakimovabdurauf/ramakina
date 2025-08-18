@@ -21,9 +21,9 @@ export const useProductStore = defineStore('product', {
         },
         "created_at": "2025-07-24 15:49:17",
         "images": [
-          "/products/1.jpg",
-          "/products/1-2.jpg",
-          "/products/1-3.jpg"
+          "/products/10.jpg",
+          "/products/10-2.jpg",
+          "/products/10-3.jpg"
         ]
       },
     {
@@ -63,9 +63,9 @@ export const useProductStore = defineStore('product', {
       },
       "created_at": "2025-07-24 15:46:29",
       "images": [
-        "/products/3.jpg",
-        "/products/3-2.jpg",
-        "/products/3-3.jpg"
+        "/products/8.jpg",
+        "/products/8-2.jpg",
+        "/products/8-3.jpg"
       ]
     },
     {
@@ -84,9 +84,9 @@ export const useProductStore = defineStore('product', {
       },
       "created_at": "2025-07-24 15:44:37",
       "images": [
-        "/products/4.jpg",
-        "/products/4-2.jpg",
-        "/products/4-3.jpg"
+        "/products/7.jpg",
+        "/products/7-2.jpg",
+        "/products/7-3.jpg"
       ]
     },
     {
@@ -105,9 +105,9 @@ export const useProductStore = defineStore('product', {
       },
       "created_at": "2025-07-24 15:43:22",
       "images": [
-        "/products/5.jpg",
-        "/products/5-2.jpg",
-        "/products/5-3.jpg"
+        "/products/6.jpg",
+        "/products/6-2.jpg",
+        "/products/6-3.jpg"
       ]
     },
     {
@@ -126,9 +126,9 @@ export const useProductStore = defineStore('product', {
       },
       "created_at": "2025-07-24 15:41:37",
       "images": [
-        "/products/6.jpg",
-        "/products/6-2.jpg",
-        "/products/6-3.jpg"
+        "/products/5.jpg",
+        "/products/5-2.jpg",
+        "/products/5-3.jpg"
       ]
     },
     {
@@ -147,9 +147,9 @@ export const useProductStore = defineStore('product', {
       },
       "created_at": "2025-07-24 15:40:11",
       "images": [
-        "/products/7.jpg",
-        "/products/7-2.jpg",
-        "/products/7-3.jpg"
+        "/products/4.jpg",
+        "/products/4-2.jpg",
+        "/products/4-3.jpg"
       ]
     },
     {
@@ -168,9 +168,9 @@ export const useProductStore = defineStore('product', {
       },
       "created_at": "2025-07-23 17:59:24",
       "images": [
-        "/products/8.jpg",
-        "/products/8-2.jpg",
-        "/products/8-3.jpg"
+        "/products/3.jpg",
+        "/products/3-2.jpg",
+        "/products/3-3.jpg"
       ]
     },
     {
@@ -210,9 +210,9 @@ export const useProductStore = defineStore('product', {
       },
       "created_at": "2025-07-23 17:52:40",
       "images": [
-        "/products/10.jpg",
-        "/products/10-2.jpg",
-        "/products/10-3.jpg"
+        "/products/1.jpg",
+        "/products/1-2.jpg",
+        "/products/1-3.jpg"
       ]
     }
     ]
